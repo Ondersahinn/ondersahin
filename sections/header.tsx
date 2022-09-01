@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import Link from "next/link"
-import Button from "../components/button";
+import Button from "@components/button";
 
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
