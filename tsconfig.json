@@ -18,7 +18,10 @@
       "@components/*": ["src/components/*"],
       "@components": ["src/components"],
       "@sections/*":["sections/*"],
-      "@constants/*":["constants/*"],
+      "@constants/*":["/src/constants/*"],
+      "@models/*":["models/*"],
+      "@db/*":["db/*"],
+      "@utils/*":["utils/*"],
     },
     "incremental": true
   },
