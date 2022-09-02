@@ -6,7 +6,7 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Head>
-        <title>Next Tailwind Theme</title>
+        <title>Önder Şahin</title>
         <meta name="description" content="Create dark mode in next and tailwind" />
       </Head>
       <div className="min-h-screen flex flex-col  max-w-2xl mx-auto px-4;">

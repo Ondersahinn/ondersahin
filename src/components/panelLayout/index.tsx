@@ -2,6 +2,7 @@ import { Layout, Menu } from 'antd';
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { items } from 'src/constants';
+import Image from 'next/image';
 
 interface IProps {
     children: ReactNode;
@@ -38,7 +39,7 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                 >
                     <div className="flex items-center justify-center py-3">
                         <Link href='/panel'>
-                            <img src={'https://ondersahin.com.tr//images/onderlogo.png?auto=format&fit=max&w=256'} alt="" className="max-w-full max-h-12" />
+                           <Image src='/logo.png' alt='Önder Şahin' width={120} height={90} className='object-contain'/>
                         </Link>
                     </div>
                     <Menu
@@ -55,8 +56,8 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                             {props.children}
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center', }} className='bg-black text-white border-t-[1px] border-gray-400'>
-                        Ecommerce @React Team
+                    <Footer style={{ textAlign: 'center', }} className='bg-black text-white border-t-[1px] border-gray-400 p-3'>
+                        Önder Şahin@Portfolio
                     </Footer>
                 </Layout>
             </Layout>
