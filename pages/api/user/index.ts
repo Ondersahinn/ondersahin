@@ -16,12 +16,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (username && email && password) {
       const passwordHash = bcrypt.hashSync(password, 10);
       try {
-        var user = new User({
+        let user = new User({
           username,
           email,
           password: passwordHash,
         });
-        var usercreated = await user.save();
+        let usercreated = await user.save();
         const status: number = 201;
         return res.status(status).send(usercreated);
       } catch (error) {

@@ -6,8 +6,14 @@ const connectDB = (handler: NextApiHandler) => async (req: NextApiRequest, res: 
     return handler(req, res);
   }
   else {
-    await mongoose.connect(process.env.MONGODB_URI as string);
-    return handler(req, res);
+    try {
+      await mongoose.connect(process.env.MONGODB_URI as string);
+      return handler(req, res);
+    }
+    catch {
+      res.status(403).json({hata:'env okunamadı'})
+    }
+   
   }
 
 };
