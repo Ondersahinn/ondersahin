@@ -25,7 +25,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
         if (user === null) {
             return res.status(404).send({
                 data: null,
-                status: 404,
+                status: 401,
                 message: 'User not found. Authentication failed.',
                 color: 'danger',
             });
@@ -41,10 +41,16 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
                 { expiresIn: "2h" }
             )
 
-            const userSesion = { isLoggedIn: true, token, ...user } as ISession;
-            req.session.user = userSesion;
+            const userSesion: any = { isLoggedIn: true, token };
+            userSesion.admin = user.admin;
+            userSesion.username = user.username;
+            userSesion._id = user._id;
+            userSesion.email = user.email;
+            userSesion.password = user.password;
+            userSesion.since = user.since;
+            req.session.user = userSesion as ISession;
             await req.session.save();
-
+            
             return res.json({
                 message: "token created expiresIn 2h",
                 status: 200,

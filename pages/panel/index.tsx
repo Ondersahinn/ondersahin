@@ -1,9 +1,7 @@
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import { useState } from 'react';
-// import { Login } from '@components';
-// import { items } from 'contants';
 import PanelLayout from '@components/panelLayout';
-import { NextApiRequest } from 'next';
+import { adminCheckAuth, } from '@utils/session';
 
 export const Panel: React.FC = () => {
     const { Content, Footer, Sider } = Layout;
@@ -29,23 +27,4 @@ export const Panel: React.FC = () => {
 export default Panel;
 Panel.displayName = "PanelPage";
 
-// export async function getServerSideProps(req: NextApiRequest) {
-//     const user = req.session?.user;
-//     if (!!user && user.admin) {
-//         return {
-//             props: {
-//                 user
-//             }
-//         }
-//     }
-
-//     else {
-//         return {
-//             redirect: {
-//                 permanent: false,
-//                 destination: "/",
-//             },
-//             props: {},
-//         }
-//     }
-// }
+export const getServerSideProps = adminCheckAuth({});

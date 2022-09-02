@@ -18,6 +18,7 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             <Layout
+                className='bg-black text-white'
                 style={{
                     minHeight: '100vh',
                 }}
@@ -48,13 +49,13 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                         items={items}
                     />
                 </Sider>
-                <Layout className="site-layout">
+                <Layout className="site-layout bg-black">
                     <Content style={{ margin: '0 16px', }}>
                         <div className="site-layout-background p-[24px] min-h-[360px]">
                             {props.children}
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center', }}>
+                    <Footer style={{ textAlign: 'center', }} className='bg-black text-white border-t-[1px] border-gray-400'>
                         Ecommerce @React Team
                     </Footer>
                 </Layout>
