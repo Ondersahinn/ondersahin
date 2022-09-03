@@ -15,20 +15,23 @@ const Hero = () => {
         <li> 📫 How to reach me ondershin@gmail.com</li>
         <li>📄 Know about my experiences  <a href="https://ondersahin.com.tr" target="blank">ondersahin.com.tr</a> </li>
       </ul>
-      <h3  className="text-3xl my-3 dark:text-white">Connect with me:</h3>
+      <h3 className="text-3xl my-3 dark:text-white">Connect with me:</h3>
       <p className="flex flex-row items-center mb-10">
         <a href="https://www.linkedin.com/in/ondershin/" target="blank">
           <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ondershin" height="30" width="40" />
         </a>
-        <a href="https://medium.com/@ondershin" className="ml-4"  target="blank">
-          <img src="https://user-images.githubusercontent.com/46032537/187526026-21b693c1-d6d7-4c7b-9d26-83a539e50006.svg"  className="dark:invert" alt="ondershin" height="30" width="40" />
+        <a href="https://medium.com/@ondershin" className="ml-4" target="blank">
+          <img src="https://user-images.githubusercontent.com/46032537/187526026-21b693c1-d6d7-4c7b-9d26-83a539e50006.svg" className="dark:invert" alt="ondershin" height="30" width="40" />
 
         </a>
       </p>
-      <h3  className="text-2xl my-3 dark:text-white">Languages and Tools:</h3>
-      <p className="grid grid-cols-8 mt-5 gap-5 mb-10">
+      <h3 className="text-2xl my-3 dark:text-white">Languages and Tools:</h3>
+      <p className="grid grid-cols-7 mt-5 gap-5 mb-10">
         <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40" />
+        </a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">
+          <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="javascript" width="40" height="40" />
         </a>
         <a href="https://reactjs.org/" target="_blank" rel="noreferrer">
           <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40" />
@@ -41,7 +44,7 @@ const Hero = () => {
         </a>
 
       </p>
-    
+
     </section>
   )
 }
