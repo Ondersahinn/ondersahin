@@ -7,13 +7,16 @@ import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import store from '@redux/store';
+import PanelLayout from '@components/panelLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <ThemeProvider attribute="class">
         {Component.displayName === 'PanelPage' ?
-          <Component {...pageProps} /> :
+          <PanelLayout>
+            <Component {...pageProps} />
+          </PanelLayout> :
           <Layout>
             <Component {...pageProps} />
           </Layout>

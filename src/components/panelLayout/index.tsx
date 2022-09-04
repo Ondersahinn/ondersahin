@@ -2,7 +2,6 @@ import { Layout, Menu } from 'antd';
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { items } from 'src/constants';
-import Image from 'next/image';
 
 interface IProps {
     children: ReactNode;
@@ -12,6 +11,7 @@ interface IProps {
 export const PanelLayout: React.FC<IProps> = (props: IProps) => {
     const { Content, Footer, Sider } = Layout;
     const [collapsed, setCollapsed] = useState(false);
+
     const onCollapse = (collapsed: any) => {
         setCollapsed(collapsed);
     };
@@ -19,7 +19,7 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             <Layout
-                className='bg-black text-white'
+                className=''
                 style={{
                     minHeight: '100vh',
                 }}
@@ -39,7 +39,9 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                 >
                     <div className="flex items-center justify-center py-3">
                         <Link href='/panel'>
-                           <Image src='/logo.png' alt='Önder Şahin' width={120} height={90} className='object-contain'/>
+                            <span className='text-2xl pt-5 font-[inter]'>
+                                Önder Şahin
+                            </span>
                         </Link>
                     </div>
                     <Menu
@@ -50,7 +52,7 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                         items={items}
                     />
                 </Sider>
-                <Layout className="site-layout bg-black">
+                <Layout className="site-layou">
                     <Content style={{ margin: '0 16px', }}>
                         <div className="site-layout-background p-[24px] min-h-[360px]">
                             {props.children}

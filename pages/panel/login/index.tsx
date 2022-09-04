@@ -20,6 +20,7 @@ const Login: React.FC = () => {
             if (res.data.status === 200) {
                 debugger
                 if (res.data.data.user.admin) {
+                    localStorage.setItem('access_token',res.data.data.token)
                     router.push('/panel')
                 }
                 else {
@@ -87,7 +88,6 @@ export default Login
 export const getServerSideProps = withIronSessionSsr(async (context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) => {
     try {
         const session = await getIronSession(context.req, context.res, sessionOptions);
-        console.log('admin', session.user?.admin)
         if (!!session.user && session.user.admin) {
             return {
                 redirect: {
