@@ -22,6 +22,7 @@
       "@models/*":["models/*"],
       "@db/*":["db/*"],
       "@utils/*":["utils/*"],
+      "@redux/*": ["src/redux/*"],
     },
     "incremental": true
   },
