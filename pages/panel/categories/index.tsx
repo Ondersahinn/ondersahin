@@ -3,7 +3,6 @@ import { RootState } from "@redux/reducers";
 import { changeCategoriesStatus, fetchCategories } from "@redux/slices/categories";
 import { adminCheckAuth } from "@utils/session";
 import { Table } from "antd";
-import { Icategories } from "interfaces/categories";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { http } from "src/api/http";
