@@ -1,14 +1,10 @@
 
 import axios from 'axios'
 
-let instance = axios.create({
-    headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`
-    }
-})
+let instance = axios.create({})
 
 instance.interceptors.request.use((config) => {
-    const apiToken = localStorage.getItem('access_token')
+    const apiToken = typeof localStorage !== 'undefined' && localStorage.getItem('access_token')
     config.headers = {
         Authorization: `Bearer ${apiToken}`
     }
