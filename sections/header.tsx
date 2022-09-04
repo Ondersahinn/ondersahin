@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { changeLocaleLanguge } from "@redux/slices/translation";
 import { useRouter } from "next/router";
 import useNavigator from "src/hooks/useNavigator";
+import { fetchCategories } from "@redux/slices/categories";
 
 const Header = () => {
   const { systemTheme, theme, setTheme } = useTheme();
@@ -32,12 +33,16 @@ const Header = () => {
   useEffect(() => {
     dispatch(changeLocaleLanguge(locale))
   }, [locale, dispatch])
-  const navigations = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Blog', path: '/blog' },
-    { label: 'Bookmark', path: '/bookmark' },
-  ];
+  
+  const status = useSelector((state: RootState) => state.categories.status);
+  const categories = useSelector((state: RootState) => state.categories.categories);
+ 
+  useEffect(() => {
+      if (status === 'idle') {
+          dispatch(fetchCategories())
+      }
+  }, [dispatch, status])
+
   const renderThemeChanger = () => {
     if (!mounted) return null;
 
@@ -74,10 +79,10 @@ const Header = () => {
   return (
     <header className="h-16 flex items-center justify-between">
       <ul className="flex gap-4">
-        {navigations.map(nav => (
+        {categories.map(nav => (
           <Link href={nav.path} key={nav.path}><a
-            className="font-semibold text-gray-400 hover:text-gray-500"
-          >{nav.label}</a></Link>
+            className="font-semibold text-gray-400 hover:text-gray-500 capitalize"
+          >{nav.name}</a></Link>
         ))}
       </ul>
       <div className="flex">

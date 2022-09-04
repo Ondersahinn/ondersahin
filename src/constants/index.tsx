@@ -46,3 +46,21 @@ export const slugify = (text: string) => {
     .toLowerCase();
 
 }
+
+export const categoryColumns = [
+  {
+    title: 'Category Name',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: 'Path',
+    dataIndex: 'path',
+    key: 'path',
+  },
+  {
+    title: 'Create date time',
+    dataIndex: 'since',
+    key: 'since',
+  },
+];

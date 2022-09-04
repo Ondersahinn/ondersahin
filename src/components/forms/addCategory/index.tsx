@@ -1,5 +1,7 @@
+import { changeCategoriesStatus } from '@redux/slices/categories';
 import { Form, Input, notification } from 'antd';
 import { Icategories } from 'interfaces/categories';
+import { useDispatch } from 'react-redux';
 import { http } from 'src/api/http';
 const layout = {
     labelCol: {
@@ -18,9 +20,11 @@ const tailLayout = {
 
 const AddCategories = () => {
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
 
     const onFinish = (values: Icategories) => {
         http.post('/api/categories', values).then((res) => {
+            dispatch(changeCategoriesStatus('idle'))
             notification.success({
                 message: 'Kayıt Başarılı',
                 description:

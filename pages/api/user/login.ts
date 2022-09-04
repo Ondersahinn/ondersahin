@@ -38,7 +38,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
                 admin: user?.admin,
             },
                 jwtKey,
-                { expiresIn: "2h" }
+                { expiresIn: "24h" }
             )
 
             const userSesion: any = { isLoggedIn: true, token };

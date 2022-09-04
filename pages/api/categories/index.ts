@@ -2,11 +2,20 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import connectDB from '../../../db/mongodb';
 import Categories from '@models/categories';
 import { Icategories } from 'interfaces/categories';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { IUser } from 'interfaces/user';
+import jwt from 'jsonwebtoken';
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+    if (req.method === 'GET') {
+        let categories: Icategories[] | null = await Categories.find({});
+
+        return res.status(200).json({
+            message: "allCategories",
+            status: 200,
+            data: categories,
+            color: 'succes',
+        });
+    }
     const token = req.headers.authorization;
     if (!!token) {
         const key = token.split(' ')[1]
@@ -66,18 +75,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
     }
-
-    else if (req.method === 'GET') {
-        let categories: Icategories[] | null = await Categories.find({});
-
-        return res.status(200).json({
-            message: "allCategories",
-            status: 200,
+    else if (req.method === 'DELETE') {
+        const { id } = req.query;
+        let categories: any = await Categories.deleteOne({ _id: id });
+        return res.status(202).json({
+            message: "deleteCategories",
+            status: 202 ,
             data: categories,
             color: 'succes',
         });
     }
-
     else {
         return res.status(401).json({
             message: "unAuthorization",
