@@ -2,7 +2,7 @@
 const About = () => {
 
   const bar = (<div className="w-full bg-gray-200 h-1">
-    <div className="bg-black dark:bg-amber-400 h-1 w-[45px]"></div>
+    <div className="bg-black dark:bg-amber-400 h-1 w-[10%]"></div>
   </div>)
 
 
