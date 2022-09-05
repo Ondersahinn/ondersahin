@@ -23,19 +23,29 @@ const blogsSlice = createSlice({
             state.content = action.payload
         }
     },
+    extraReducers(builder) {
+        builder
+            .addCase(fetchBlogs.pending, (state, action) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchBlogs.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.blogs = action.payload;
+            })
+            .addCase(fetchBlogs.rejected, (state, action) => {
+                state.status = 'failed';
+            });
+    },
 
 });
 
 export const { changeContent } = blogsSlice.actions;
-
-export const saveNewTodo: any = createAsyncThunk('rtest', async (queryParam: any, { getState }: any) => {
-    const newObj = {
-        title: 'İlk Post',
-        shortDesc: 'The VKS flew air strikes using PGMs against unknown targets in Studenok, Slovyansk, Siversk, Kostyantynivka, Pokrivsk, Vasyilivka, Zaporizhzhya (5–6 places were hit), and — especially ',
-        description: getState().blogs.content
-    }
-    http.post('/api/blog/add', newObj).then((res) => res).catch((err) => err)
-});
 export default blogsSlice.reducer;
+
+export const fetchBlogs: any = createAsyncThunk('/api/blog', async (queryParam: any) => {
+    const res = await http.get('/api/blog');
+    return res.data.data;
+});
+
 
 

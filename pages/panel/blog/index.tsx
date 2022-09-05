@@ -1,4 +1,5 @@
 import { RootState } from "@redux/reducers";
+import { fetchBlogs } from "@redux/slices/blog";
 import { adminCheckAuth } from "@utils/session";
 import { Table } from "antd";
 import { useEffect, useState } from "react";
@@ -10,8 +11,8 @@ const Blog: React.FC = () => {
     const colums = [
         {
             title: 'Title',
-            dataIndex: 'Title',
-            key: 'Title',
+            dataIndex: 'title',
+            key: 'title',
         },
         {
             title: 'Short Desc',
@@ -36,9 +37,8 @@ const Blog: React.FC = () => {
         }
     ];
 
-    const [isList, setIsList] = useState<boolean>(true);
     const status = useSelector((state: RootState) => state.categories.status);
-    const categories = useSelector((state: RootState) => state.categories.categories);
+    const blogs = useSelector((state: RootState) => state.blogs.blogs);
     const dispatch = useDispatch();
 
 
@@ -50,20 +50,14 @@ const Blog: React.FC = () => {
 
     useEffect(() => {
         if (status === 'idle') {
-            // dispatch(fetchCategories())
+            dispatch(fetchBlogs())
         }
     }, [dispatch, status])
 
     return (
         <>
             <div>
-                <div className="flex justify-end">
-                    <button type="button" onClick={() => setIsList(!isList)}
-                        className="py-2.5 float-right px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">{isList ? 'Kategori Ekle' : 'Listeye Dön'}</button>
-                </div>
-                
-                    <Table dataSource={categories.map((x: any) => { return { ...x, key: x._id } })} columns={colums} />
-                   
+                <Table dataSource={blogs.map((x: any) => { return { ...x, key: x._id, owner: x.owner?.email } })} columns={colums} />
             </div>
         </>
     )
