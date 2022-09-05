@@ -21,7 +21,7 @@ function getItem(
 export const items: MenuProps['items'] = [
   getItem('Ürünler', 'sub1', <TagOutlined />, [
     getItem(<Link href="/panel/categories">Kategoriler</Link>, 'categories'),
-    getItem('Option 10', '10'),
+    getItem(<Link href="/panel/resources">Resources</Link>, 'resources'),
     getItem('Option 11', '11'),
     getItem('Option 12', '12'),
   ]),

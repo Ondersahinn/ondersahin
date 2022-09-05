@@ -5,3 +5,10 @@ export interface Icategories {
     path: string
     since?: Date
 }
+
+export interface Iresources {
+    key: string,
+    value: string,
+    lang: string,
+    since?: Date
+}
