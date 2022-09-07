@@ -8,7 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
         try {
             let blogLists: IBlog[] | null = await Blog.find({}).populate({path:'owner',select:'username email'})
-            return res.status(201).json({
+            return res.status(200).json({
                 message: "BlogCreated",
                 status: 200,
                 data: blogLists,

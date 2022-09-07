@@ -43,9 +43,9 @@ const Blog: React.FC = () => {
 
 
     const handleDelete = async (record: any) => {
-        // await http.delete('/api/categories?id=' + record.key).then((res)=> {
-        //     dispatch(changeCategoriesStatus('idle'))
-        // })
+        await http.delete('/api/blog/delete?id=' + record.key).then((res)=> {
+            dispatch(fetchBlogs())
+        })
     }
 
     useEffect(() => {
