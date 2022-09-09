@@ -10,12 +10,12 @@ import { http } from "src/api/http";
 export const Resources: React.FC = () => {
     const colums = [
         {
-            title: 'Category Name',
+            title: 'Key',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Path',
+            title: 'Value',
             dataIndex: 'path',
             key: 'path',
         },

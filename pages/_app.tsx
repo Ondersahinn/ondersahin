@@ -8,9 +8,14 @@ import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import store from '@redux/store';
 import PanelLayout from '@components/panelLayout';
+import Head from 'next/head';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <>
+    <Head>
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+  </Head>
     <Provider store={store}>
       <ThemeProvider attribute="class">
         {Component.displayName === 'PanelPage' ?
@@ -23,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       </ThemeProvider>
     </Provider>
+    </>
   )
 }
 

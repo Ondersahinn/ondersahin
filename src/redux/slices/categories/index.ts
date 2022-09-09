@@ -40,8 +40,7 @@ export const { changeCategoriesStatus } = categoriesSlice.actions;
 export const fetchCategories: any = createAsyncThunk('/api/categories', async (queryParam: any) => {
     const res = await http.get('/api/categories');
     return res.data.data;
-}
-);
+});
 
 export default categoriesSlice.reducer;
 
