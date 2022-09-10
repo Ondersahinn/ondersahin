@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { http } from "src/api/http";
 import { fetchResources } from '@redux/slices/translation';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import useTranslation from 'src/hooks/useTranslation';
 
 export const Resources: React.FC = () => {
     const colums = [
@@ -43,6 +45,7 @@ export const Resources: React.FC = () => {
     const resources = useSelector((state: RootState) => state.translation.resources);
     const dispatch = useDispatch();
     const router = useRouter();
+    const { t } = useTranslation();
 
 
     const handleDelete = async (record: any) => {
@@ -59,6 +62,9 @@ export const Resources: React.FC = () => {
 
     return (
         <>
+            <Head>
+                <title> {t('resorceCreated')}</title>
+            </Head>
             <div>
                 <div className="flex justify-end">
                     <button type="button" onClick={() => setIsList(!isList)}

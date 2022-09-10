@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Iresources } from 'interfaces/categories';
 import { http } from 'src/api/http';
+import useNavigator from 'src/hooks/useNavigator';
 
 interface ITranslation {
   locale: string | 'en' | 'en-US' | 'tr-TR' | 'tr',

@@ -10,13 +10,7 @@ const About = () => {
     {
       _id: 1,
       title: 'Kafein Technology Solutions | March 2022 - Continues',
-      description: `I am working on Türk Telekom Yaay project within Kafein
-                    Yazilim. We are developing projects with NextJS for Türk
-                    Telekom. In addition to the middleware services that will
-                    communicate with the backend and the client, we are
-                    making new developments on the React side. I have
-                    developed important special components such as Story,
-                    automatic video playback with observer`,
+      description: "I am working on Türk Telekom Yaay project within Kafein Yazilim. We are developing projects with NextJS for Türk Telekom. In addition to the middleware services that will communicate with the backend and the client, we are making new developments on the React side. I have developed important special components such as Story, automatic video playback with observer",
       project: [
         {
           id: 1,
