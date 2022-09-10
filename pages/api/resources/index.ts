@@ -7,8 +7,15 @@ import jwt from 'jsonwebtoken';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
+        let resources: Iresources[] | null = []
         const { lang } = req.query;
-        const resources: Iresources[] | null = await Resources.find({ lang: lang });
+        if (lang === 'all') {
+            resources = await Resources.find({});
+        }
+        else {
+            resources = await Resources.find({ lang: lang });
+        }
+
         return res.status(200).json({
             message: "allResources",
             status: 200,

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Iresources } from 'interfaces/categories';
 import { http } from 'src/api/http';
-import useNavigator from 'src/hooks/useNavigator';
 
 interface ITranslation {
   locale: string | 'en' | 'en-US' | 'tr-TR' | 'tr',
@@ -24,26 +23,26 @@ const translationSlice = createSlice({
     changeLocaleLanguge(state, action) {
       state.locale = action.payload
       state.type = 'changeLanguage'
-    }
+    },
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchCategories.pending, (state, action) => {
+      .addCase(fetchResources.pending, (state, action) => {
         state.status = 'loading';
       })
-      .addCase(fetchCategories.fulfilled, (state, action) => {
+      .addCase(fetchResources.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.resources = action.payload;
       })
-      .addCase(fetchCategories.rejected, (state, action) => {
+      .addCase(fetchResources.rejected, (state, action) => {
         state.status = 'failed';
       });
   },
 });
 
 export const { changeLocaleLanguge } = translationSlice.actions
-export const fetchCategories: any = createAsyncThunk('/api/resources', async (queryParam: any) => {
-  const res = await http.get('/api/resources');
+export const fetchResources: any = createAsyncThunk('/api/resources', async (queryParam: any) => {
+  const res = await http.get('/api/resources?lang=' + queryParam);
   return res.data.data;
 });
 export default translationSlice.reducer;
