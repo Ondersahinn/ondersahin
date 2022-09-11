@@ -1,8 +1,5 @@
-import { Iresources } from 'interfaces/categories';
 import { IPages } from 'interfaces/pages';
-import { Schema, model, models, ObjectId } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
-
+import { Schema, model, models } from 'mongoose';
 
 export var pagesSchema = new Schema<IPages>({
 
@@ -34,10 +31,6 @@ export var pagesSchema = new Schema<IPages>({
     about: {
         experiences: [
             {
-                id: {
-                    type: String,
-                    default: uuidv4(),
-                },
                 title: {
                     type: String,
                 },
@@ -46,10 +39,6 @@ export var pagesSchema = new Schema<IPages>({
                 },
                 project: [
                     {
-                        id: {
-                            type: String,
-                            default: uuidv4()
-                        },
                         name: {
                             type: String,
                         },
@@ -65,10 +54,6 @@ export var pagesSchema = new Schema<IPages>({
         ],
         education: [
             {
-                id: {
-                    type: String,
-                    default: uuidv4()
-                },
                 title: {
                     type: String
                 },
@@ -78,7 +63,12 @@ export var pagesSchema = new Schema<IPages>({
             }
         ],
         hobbies: {
-            type: Array<String>
+            title: {
+                type: String
+            },
+            description: {
+                type: String
+            }
         },
         skils: {
             type: Array<String>
