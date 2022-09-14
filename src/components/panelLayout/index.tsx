@@ -38,8 +38,8 @@ export const PanelLayout: React.FC<IProps> = (props: IProps) => {
                     }}
                 >
                     <div className="flex items-center justify-center py-3">
-                        <Link href='/panel'>
-                            <span className='text-2xl pt-5 font-[inter]'>
+                        <Link href='/' target={'_blank'}>
+                            <span className='text-2xl pt-5 font-[inter] cursor-pointer'>
                                 Önder Şahin
                             </span>
                         </Link>
