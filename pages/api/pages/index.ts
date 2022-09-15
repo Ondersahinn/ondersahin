@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import { IPages } from 'interfaces/pages';
 
 
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
         let resources: IPages[] | null = []
