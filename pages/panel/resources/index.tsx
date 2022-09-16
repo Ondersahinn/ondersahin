@@ -63,7 +63,7 @@ export const Resources: React.FC = () => {
     return (
         <>
             <Head>
-                <title> {t('resorceCreated')}</title>
+                <title>Dil Kaynakları</title>
             </Head>
             <div>
                 <div className="flex justify-end">

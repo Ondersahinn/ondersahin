@@ -4,8 +4,10 @@ const Hero = () => {
 
   return (
     <>
+      {/* <Head>
+        <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+      </Head> */}
 
-     
       <section className="mt-16">
         <h1 className="text-5xl font-bold dark:text-white mb-10">Hi there I am<span className="dark:text-purple-600"> Önder Şahin 👋</span></h1>
         <h3 className="text-3xl my-3 dark:text-white">I am Web Developer</h3>
@@ -21,9 +23,9 @@ const Hero = () => {
         </ul>
 
         <h3 className="text-3xl my-3 dark:text-white">Connect with me:</h3>
-              
-        <div className="badge-base LI-profile-badge" data-locale="tr_TR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="ondershin" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://tr.linkedin.com/in/ondershin?trk=profile-badge">Önder Şahin</a></div>
-                            
+
+        {/* <div className="badge-base LI-profile-badge" data-locale="tr_TR" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="ondershin" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://tr.linkedin.com/in/ondershin?trk=profile-badge">Önder Şahin</a></div> */}
+
         <p className="flex flex-row items-center mb-10">
           <a href="https://www.linkedin.com/in/ondershin/" target="blank">
             <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="ondershin" height="30" width="40" />
