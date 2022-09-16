@@ -18,7 +18,6 @@ instance.interceptors.response.use((response) => {
 }, error => {
 
     if (error.response.status === 401) {
-        console.log(error.response.status)
         typeof localStorage !== 'undefined' && localStorage.clear()
     }
     if (error.response) {

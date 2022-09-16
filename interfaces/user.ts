@@ -1,11 +1,10 @@
-import mongoose from 'mongoose';
 
 export interface IUser {
     username: string,
     email: string,
     password: string,
     since: Date,
-    _id: mongoose.ObjectId,
+    _id: string,
     admin: boolean,
 }
 
@@ -16,7 +15,7 @@ export interface ISession {
     email: string,
     password: string,
     since: Date,
-    _id: mongoose.ObjectId,
+    _id: string,
     admin: boolean,
 
 }
@@ -24,6 +23,6 @@ export interface ISession {
 export interface IJwt {
     email: string,
     password: string,
-    id: mongoose.ObjectId,
+    id: string,
     admin: boolean,
 }

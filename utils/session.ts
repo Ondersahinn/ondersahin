@@ -26,7 +26,6 @@ export const adminCheckAuth = (
   withIronSessionSsr(async (context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) => {
     try {
       const session = await getIronSession(context.req, context.res, sessionOptions);
-      console.log('admin', session.user?.admin)
       if (session.user === undefined || session.user.admin === false) {
         return {
           redirect: {

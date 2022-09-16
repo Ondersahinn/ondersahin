@@ -24,7 +24,6 @@ const AddResources = () => {
     const dispatch = useDispatch();
 
     const onFinish = (values: Iresources) => {
-        console.log('values', values)
         http.post('/api/resources', values).then((res) => {
             dispatch(fetchResources('all'))
             notification.success({
