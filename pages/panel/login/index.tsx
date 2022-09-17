@@ -18,7 +18,6 @@ const Login: React.FC = () => {
     const onFinish = (values: any) => {
         axios.post('/api/user/login', values).then(res => {
             if (res.data.status === 200) {
-                debugger
                 if (res.data.data.user.admin) {
                     localStorage.setItem('access_token',res.data.data.token)
                     router.push('/panel')
@@ -51,8 +50,8 @@ const Login: React.FC = () => {
     };
 
     return (
-        <Tabs defaultActiveKey="1" type='line'  >
-            <TabPane tab="Giriş Yap" key="1"  >
+        <>
+        <h1>Giriş yap</h1>
                 <Form
                     name="login"
                     wrapperCol={{ span: 16 }}
@@ -77,9 +76,7 @@ const Login: React.FC = () => {
                         Giriş Yap
                     </Button>
                 </Form>
-            </TabPane>
-
-        </Tabs>
+        </>
     )
 }
 
