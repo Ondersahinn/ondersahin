@@ -1,8 +1,10 @@
+import { IBlog } from "./blogs";
 
 export interface IUser {
     username: string,
     email: string,
     password: string,
+    blogs: Array<IBlog>
     since: Date,
     _id: string,
     admin: boolean,
