@@ -19,12 +19,12 @@ function getItem(
   } as MenuItem;
 }
 export const items: MenuProps['items'] = [
-  getItem('Ürünler', 'sub1', <TagOutlined />, [
-    getItem(<Link href="/panel/categories">Kategoriler</Link>, 'categories'),
-    getItem(<Link href="/panel/resources">Resources</Link>, 'resources'),
-    getItem(<Link href="/panel/blog">Blog</Link>, 'blog'),
-  ]),
-
+  getItem(<Link href="/panel/categories">Kategoriler</Link>, 'categories'),
+  getItem(<Link href="/panel/resources">Resources</Link>, 'resources'),
+  getItem('Blog', 'sub1', <TagOutlined />, [
+    getItem(<Link href="/panel/blog/add">Blog Lists</Link>, 'bloglist'),
+    getItem(<Link href="/panel/blog/add">Add Blog</Link>, 'addblog'),
+  ])
 ];
 
 export const slugify = (text: string) => {

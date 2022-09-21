@@ -30,7 +30,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/api/categories.js"
-  ],
+    "pages/api/categories.js", "src/components/rinchTextEditor/index.tsx" ],
   "exclude": ["node_modules"]
 }
