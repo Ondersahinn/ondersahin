@@ -14,18 +14,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             })
         })
         promise.then(async ({ fields, files }: any) => {
+            const image = files.image;
             try {
                 const dir = `./public/${folderName}`
                 if (!fs.existsSync(dir)) {
                     fs.mkdirSync(dir);
                 }
-                const data = fs.readFileSync(files.image.filepath);
-                fs.writeFileSync(`./public/${folderName}/${files.image.newFilename + '.' + files.image.mimetype?.split('/')[1]}`, data);
-                await fs.unlinkSync(files.image.filepath);
+                const data = fs.readFileSync(image.filepath);
+                fs.writeFileSync(`./public/${folderName}/${image.newFilename + '.' + image.mimetype?.split('/')[1]}`, data);
+                await fs.unlinkSync(image.filepath);
                 return res.status(200).json({
                     message: "uploaded",
                     status: 200,
-                    data: { url: `/${folderName}/${files.image.newFilename}`, orginalName: files.image.originalFilename },
+                    data: { url: `/${folderName}/${image.newFilename}.${image.mimetype?.split('/')[1]}`, orginalName: image.originalFilename },
                     color: 'success',
                 });
             } catch (error) {
