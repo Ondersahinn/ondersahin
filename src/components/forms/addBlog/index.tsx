@@ -8,7 +8,7 @@ const layout = {
         span: 0,
     },
     wrapperCol: {
-        span: 16,
+        span: 24,
     },
 };
 const tailLayout = {
@@ -19,7 +19,7 @@ const tailLayout = {
 };
 const { Option } = Select;
 
-const AddResources = () => {
+const AddBlog = ({ onFieldsChange }: any    ) => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
 
@@ -44,29 +44,17 @@ const AddResources = () => {
 
     return (
         <div>
-            <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
+            <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}
+                onValuesChange={onFieldsChange}>
                 <Form.Item
-                    name="key"
+                    name="title"
                     rules={[{ required: true, message: 'Boş bırakılamaz' },]}
                 >
-                    <Input placeholder='key' />
+                    <Input className='bg-transparent' placeholder='Başlık' />
                 </Form.Item>
-                <Form.Item name="value"
+                <Form.Item name="sortDesc"
                     rules={[{ required: true, message: 'Boş bırakılamaz' },]}>
-                    <Input placeholder='value' />
-                </Form.Item>
-                <Form.Item name="lang"
-                    rules={[{ required: true, message: 'Boş bırakılamaz' },]}>
-                    <Select placeholder='Dil seçiniz'>
-                        <Option value="tr">TR</Option>
-                        <Option value="en">EN</Option>
-                    </Select>
-                </Form.Item>
-
-                <Form.Item {...tailLayout}>
-                    <button type="submit" className='text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"'>
-                        Submit
-                    </button>
+                    <Input className='bg-transparent' placeholder='Ön Yazı' />
                 </Form.Item>
             </Form>
         </div>
@@ -74,4 +62,4 @@ const AddResources = () => {
     );
 };
 
-export default AddResources;
+export default AddBlog;

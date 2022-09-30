@@ -7,8 +7,6 @@ interface Iblogs {
     status: 'loading' | 'succeeded' | 'failed' | 'idle';
     content: string
 }
-type State = any
-
 
 const initialState: Iblogs = {
     blogs: [],
@@ -22,7 +20,6 @@ const blogsSlice = createSlice({
     reducers: {
 
         changeContent(state, action) {
-            
             state.content = action.payload
         }
     },
@@ -31,18 +28,14 @@ const blogsSlice = createSlice({
 
 export const { changeContent } = blogsSlice.actions;
 
-// İexport function saveNewTodo() {
-//     return async function saveNewTodoThunk(dispatch: Dispatch, getState: () => State) {
-//         const { content } = getState()
-//         console.log(content)
-//         //   const response = await client.post('/fakeApi/todos', { todo: initialTodo })
-//         //   dispatch({ type: 'todos/todoAdded', payload: response.todo })
-//     }
-// }
-export const saveNewTodo: any = createAsyncThunk('rtest' , async (queryParam: any , {getState}) => {
-    console.log(getState())
-
-  });
+export const saveNewTodo: any = createAsyncThunk('rtest', async (queryParam: any, { getState }: any) => {
+    const newObj = {
+        title: 'İlk Post',
+        shortDesc: 'The VKS flew air strikes using PGMs against unknown targets in Studenok, Slovyansk, Siversk, Kostyantynivka, Pokrivsk, Vasyilivka, Zaporizhzhya (5–6 places were hit), and — especially ',
+        description: getState().blogs.content
+    }
+    http.post('/api/blog/add', newObj).then((res) => res).catch((err) => err)
+});
 export default blogsSlice.reducer;
 
 
