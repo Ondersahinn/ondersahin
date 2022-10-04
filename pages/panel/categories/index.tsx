@@ -3,7 +3,7 @@ import { RootState } from "@redux/reducers";
 import { changeCategoriesStatus, fetchCategories } from "@redux/slices/categories";
 import { adminCheckAuth } from "@utils/session";
 import { Table } from "antd";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { http } from "src/api/http";
 
@@ -67,5 +67,5 @@ const Categories: React.FC = () => {
 }
 Categories.displayName = 'PanelPage'
 
-export default Categories
+export default memo(Categories)
 export const getServerSideProps = adminCheckAuth({});
