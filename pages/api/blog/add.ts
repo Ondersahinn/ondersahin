@@ -1,11 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import connectDB from '../../../db/mongodb';
 import Blog from '@models/blogs';
-import User from '@models/user';
 import { IBlog } from 'interfaces/blogs';
 import jwt from 'jsonwebtoken'
 import { IJwt } from 'interfaces/user';
-import user from '../user';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.headers.authorization;

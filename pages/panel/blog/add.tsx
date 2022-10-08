@@ -34,7 +34,7 @@ const BlogAdd: React.FC = () => {
                     'Blog kayıt edildi listeye gidiniz',
                 placement: 'topRight',
             });
-            router.push('/panel/blog/list')
+            router.push('/panel/blog')
         }).catch((res) => {
             notification.error({
                 message: res.message,

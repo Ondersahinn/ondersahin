@@ -20,9 +20,6 @@ export var UserSchema = new Schema<IUser>({
     type: Boolean,
     default: false
   },
-  blogs: [
-    { type: Schema.Types.ObjectId, ref: 'blogs' }
-  ],
   since: {
     type: Date,
     default: Date.now
