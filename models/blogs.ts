@@ -1,5 +1,4 @@
 import { IBlog } from 'interfaces/blogs';
-import { IUser } from 'interfaces/user';
 import { Schema, model, models } from 'mongoose';
 
 
@@ -15,6 +14,7 @@ export var BlogSchema = new Schema<IBlog>({
   description: {
     type: String,
   },
+  tags: [{ type: String }],
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'Users'

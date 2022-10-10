@@ -5,5 +5,6 @@ export interface IBlog {
     shortDesc: string
     description: string
     since: Date
-    owner: IUser
+    owner: IUser,
+    tags: Array<string>
 }
