@@ -37,7 +37,7 @@ const Blog: React.FC = () => {
         }
     ];
 
-    const status = useSelector((state: RootState) => state.categories.status);
+    const status = useSelector((state: RootState) => state.blogs.status);
     const blogs = useSelector((state: RootState) => state.blogs.blogs);
     const dispatch = useDispatch();
 

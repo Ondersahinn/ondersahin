@@ -30,13 +30,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
     }
     if (req.method === 'POST') {
-        const { title, shortDesc, description }: IBlog = req.body;
+        const { title, shortDesc, description, tags }: IBlog = req.body;
         if (!!title && !!shortDesc && !!description) {
             try {
                 let blog = new Blog({
                     title,
                     shortDesc,
                     description,
+                    tags: tags,
                     owner: user.id,
                 });
                 let blogCreated: any = await blog.save();

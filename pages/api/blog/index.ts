@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import connectDB from '../../../db/mongodb';
 import Blog from '@models/blogs';
+import User from '@models/user';
 import { IBlog } from 'interfaces/blogs';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (req.method === 'GET') {
         try {
-            let blogLists: IBlog[] | null = await Blog.find({}).populate({path:'owner',select:'username email'})
+            let blogLists: IBlog[] | null = await Blog.find({}).populate({ path: 'owner', model: User, select:'username email' })
             return res.status(200).json({
                 message: "BlogCreated",
                 status: 200,
