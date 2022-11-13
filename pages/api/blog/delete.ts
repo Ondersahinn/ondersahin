@@ -12,6 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             user = jwt.verify(key, process.env.JWT_SCREET_KEY as string) as IJwt
         } catch (error) {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,
@@ -21,6 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
     else {
+        req.session.destroy()
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
@@ -28,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             color: 'error',
         });
     }
-    if (req.method === 'DELETE') {
+    if (req.method === 'DELETE' && !!token) {
         const { id } = req.query;
         let categories: any = await Blog.deleteOne({ _id: id });
         return res.status(202).json({

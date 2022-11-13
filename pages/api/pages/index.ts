@@ -29,6 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             jwt.verify(key, process.env.JWT_SCREET_KEY as string)
         } catch (error) {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,
@@ -38,6 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
     else {
+        req.session.destroy()
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
@@ -46,7 +48,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
     }
 
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && !!token) {
         try {
             const resource = new Pages<IPages>(
                 { ...req.body }
@@ -71,7 +73,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 
     }
-    else if (req.method === 'DELETE') {
+    else if (req.method === 'DELETE' && !!token) {
         const { id } = req.query;
         let resources: any = await Pages.deleteOne({ _id: id });
         return res.status(202).json({
@@ -81,7 +83,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             color: 'succes',
         });
     }
-    else if (req.method === 'PATCH') {
+    else if (req.method === 'PATCH' && !!token) {
         try {
             const { id } = req.query
             const update = await Pages.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true }).exec()
@@ -105,6 +107,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     }
     else {
+        req.session.destroy();
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,

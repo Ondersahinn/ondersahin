@@ -23,6 +23,7 @@ const handler: NextApiHandler = async (req: NextApiRequest, res: NextApiResponse
         const jwtKey: string = process.env.JWT_SCREET_KEY as string
 
         if (user === null) {
+            req.session.destroy()
             return res.status(404).send({
                 data: null,
                 status: 401,

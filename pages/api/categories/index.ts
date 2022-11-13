@@ -22,6 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             jwt.verify(key, process.env.JWT_SCREET_KEY as string)
         } catch (error) {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,
@@ -31,6 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
     else {
+        req.session.destroy()
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
@@ -39,7 +41,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
     }
 
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && !!token) {
         const { name, path }: Icategories = req.body;
         if (!!name && !!path) {
             try {
@@ -66,6 +68,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         else {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,

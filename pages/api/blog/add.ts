@@ -22,6 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
     else {
+        req.session.destroy();
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
@@ -29,7 +30,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             color: 'error',
         });
     }
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && !!token) {
         const { title, shortDesc, description, tags }: IBlog = req.body;
         if (!!title && !!shortDesc && !!description) {
             try {

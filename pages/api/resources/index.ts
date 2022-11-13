@@ -29,6 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         try {
             jwt.verify(key, process.env.JWT_SCREET_KEY as string)
         } catch (error) {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,
@@ -38,6 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     }
     else {
+        req.session.destroy()
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
@@ -46,7 +48,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
     }
 
-    if (req.method === 'POST') {
+    if (req.method === 'POST' && !!token) {
         const { key, value, lang }: Iresources = req.body;
         if (!!key && !!value && !!lang) {
             try {
@@ -74,6 +76,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         else {
+            req.session.destroy()
             return res.status(401).json({
                 message: "unAuthorization",
                 status: 401,
@@ -83,7 +86,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
     }
-    else if (req.method === 'DELETE') {
+    else if (req.method === 'DELETE' && !!token) {
         const { id } = req.query;
         let resources: any = await Resources.deleteOne({ _id: id });
         return res.status(202).json({
@@ -94,6 +97,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         });
     }
     else {
+        req.session.destroy()
         return res.status(401).json({
             message: "unAuthorization",
             status: 401,
