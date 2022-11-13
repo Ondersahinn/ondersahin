@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, Dispatch } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IBlog } from 'interfaces/blogs';
 import { http } from 'src/api/http';
 
