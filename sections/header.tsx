@@ -35,7 +35,9 @@ const Header = () => {
   }, [locale, dispatch])
 
   const status = useSelector((state: RootState) => state.categories.status);
-  const categories = useSelector((state: RootState) => state.categories.categories);
+  const categories : any= useSelector((state: RootState) => state.categories.categories);
+
+  console.log('categories',categories)
 
   useEffect(() => {
     if (status === 'idle') {
@@ -79,7 +81,8 @@ const Header = () => {
   return (
     <header className="h-16 flex items-center justify-between">
       <ul className="flex gap-4">
-        {categories?.map(nav => (
+        {categories?.ip}
+        {categories?.data?.map((nav:any) => (
           <Link href={nav.path} key={nav.path}><a
             className="font-semibold text-gray-400 hover:text-gray-500 capitalize"
           >{nav.name}</a></Link>

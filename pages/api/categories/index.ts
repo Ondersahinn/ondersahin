@@ -3,16 +3,17 @@ import connectDB from '../../../db/mongodb';
 import Categories from '@models/categories';
 import { Icategories } from 'interfaces/categories';
 import jwt from 'jsonwebtoken';
+import requestIp from 'request-ip'
 
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'GET') {
         let categories: Icategories[] | null = await Categories.find({});
-
+        console.log('requestIp',requestIp.getClientIp(req))
         return res.status(200).json({
             message: "allCategories",
             status: 200,
-            data: categories,
+            data: {ip:requestIp.getClientIp(req), data: categories},
             color: 'succes',
         });
     }
